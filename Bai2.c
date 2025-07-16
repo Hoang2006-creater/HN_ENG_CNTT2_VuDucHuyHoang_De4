@@ -74,18 +74,6 @@ void push(Stack* s, DrinkOrder order) {
     s->top = node;
 }
 
-DrinkOrder pop(Stack* s) {
-    DrinkOrder dummy = {"", 0, ' '};
-    if (isStackEmpty(s)) {
-        return dummy;
-    }
-    DrinkNode* temp = s->top;
-    s->top = s->top->next;
-    DrinkOrder order = temp->order;
-    free(temp);
-    return order;
-}
-
 void printQueue(Queue* q) {
     printf("Danh sach order la:\n");
     DrinkNode* temp = q->front;
@@ -133,12 +121,6 @@ int main() {
                 }
                 break;
             case 3:
-                if (!isStackEmpty(&cancel)) {
-                    enqueue(&orders, pop(&cancel));
-                }
-                else {
-                    printf("Khong co don nao de REORDER.\n");
-                }
                 break;
             case 4:
                 printQueue(&orders);
